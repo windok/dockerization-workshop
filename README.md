@@ -42,3 +42,9 @@ docker pull windok/php-redis
 docker pull rediscommander/redis-commander
 
 ```
+
+Анализ имиджей докера
+
+https://github.com/wagoodman/dive
+
+https://microbadger.com/

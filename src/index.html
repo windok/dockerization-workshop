@@ -1,0 +1,42 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Docker workshop</title>
+
+    <script type="application/javascript">
+        function updateValue(counter = 0) {
+            document.getElementById('counter').innerText = counter;
+        }
+
+        async function getValue() {
+            const response = await fetch('/api');
+            const json = await response.json();
+            console.log({ json });
+            updateValue((json && json.value) || 0);
+        }
+
+        async function increment() {
+            const response = await fetch('/api/increment', { method: 'POST' });
+            const json = await response.json();
+            updateValue((json && json.value) || 0);
+        }
+
+        async function decrement() {
+            const response = await fetch('/api/decrement', { method: 'POST' });
+            const json = await response.json();
+            updateValue((json && json.value) || 0);
+        }
+    </script>
+</head>
+
+<body onload="getValue()">
+    <div id="counter">0</div>
+
+    <button onclick="increment()">Increment</button>
+
+    <button onclick="decrement()">Decrement</button>
+</body>
+</html>

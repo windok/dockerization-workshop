@@ -1,0 +1,6 @@
+{
+    "name": "windok/sandbox-api",
+    "require": {
+        "slim/slim": "3.12.1"
+    }
+}
