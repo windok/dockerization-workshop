@@ -1,5 +1,3 @@
-Инструкция будет обновлена перед воркшопом.
-
 # Установка
 
 ## Linux
@@ -20,6 +18,12 @@ https://docs.docker.com/docker-for-windows/
 
 https://docs.docker.com/docker-for-windows/install/
 
+## Проверка что докер установлен
+``` bash
+docker run hello-world
+```
+
+
 # Подготовка к воркшопу
 
 Скачайте необходимые образы, чтобы не забивать интернет канал во время воркшопа
@@ -27,10 +31,14 @@ https://docs.docker.com/docker-for-windows/install/
 
 ```bash
 
-docker pull nginx:1.15
+docker pull nginx:1.15.11-alpine
 
-docker pull mysql:8.0
+docker pull php:7.3.4-fpm-alpine3.9
 
-docker pull node:11.11
+docker pull redis:5.0.4-alpine3.9
+
+# Собранные имиджы на случай если интернет во время воркшопа будет недоступен или очень медленный:
+docker pull windok/php-redis
+docker pull rediscommander/redis-commander
 
 ```
