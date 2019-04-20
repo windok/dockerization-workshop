@@ -1,0 +1,27 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:1.15.11-alpine
+    container_name: web-server-result
+    ports:
+      - 8890:80
+    volumes:
+      - ${SOURCE_FOLDER}:/code
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - api-php
+  api-php:
+    image: windok/php-redis
+    container_name: backend-result
+    volumes:
+      - ${SOURCE_FOLDER}:/code
+    links:
+      - db
+  db:
+    image: redis:5.0.4-alpine3.9
+    container_name: db-result
+    volumes:
+      - ${SOURCE_FOLDER}/../result/redis-data:/data
+    ports:
+      - 6390:6379
+    entrypoint: redis-server --appendonly yes
